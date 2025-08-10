@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Design Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Input Design Generator</h1>
+            <p class="subtitle">Create beautiful, customizable form inputs with real-time preview</p>
+        </header>
+
+        <div class="app-container">
+            <div class="controls-panel">
+                <h2 class="panel-title"><i class="fas fa-sliders-h"></i> Customization Options</h2>
+                
+                <div class="form-group">
+                    <label for="input-type">Input Type</label>
+                    <select id="input-type">
+                        <option value="text">Text</option>
+                        <option value="email">Email</option>
+                        <option value="password">Password</option>
+                        <option value="number">Number</option>
+                        <option value="tel">Phone</option>
+                        <option value="url">URL</option>
+                        <option value="date">Date</option>
+                        <option value="time">Time</option>
+                        <option value="datetime-local">Date & Time</option>
+                        <option value="color">Color Picker</option>
+                        <option value="range">Range Slider</option>
+                        <option value="file">File Upload</option>
+                        <option value="textarea">Textarea</option>
+                        <option value="select">Select Dropdown</option>
+                        <option value="radio">Radio Buttons</option>
+                        <option value="checkbox">Checkboxes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-label">Label Text</label>
+                    <input type="text" id="input-label" placeholder="Enter label text" value="Username">
+                </div>
+
+                <div class="form-group">
+                    <label for="placeholder">Placeholder Text</label>
+                    <input type="text" id="placeholder" placeholder="Enter placeholder text" value="Enter your username">
+                </div>
+
+                <div class="form-group">
+                    <label>Appearance</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="required" checked>
+                        <label for="required">Required</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="disabled">
+                        <label for="disabled">Disabled</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="icon">
+                        <label for="icon">Add Icon <span class="badge badge-new">New</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="border-radius">Border Radius (px)</label>
+                    <input type="range" id="border-radius" min="0" max="20" value="8">
+                </div>
+
+                <div class="form-group color-group">
+                    <div>
+                        <label for="text-color">Text Color</label>
+                        <input type="color" id="text-color" value="#1a1a2e">
+                    </div>
+                    <div>
+                        <label for="bg-color">Background Color</label>
+                        <input type="color" id="bg-color" value="#ffffff">
+                    </div>
+                    <div>
+                        <label for="border-color">Border Color</label>
+                        <input type="color" id="border-color" value="#dddddd">
+                    </div>
+                    <div>
+                        <label for="focus-color">Focus Color</label>
+                        <input type="color" id="focus-color" value="#4361ee">
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button id="reset-btn" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button id="generate-btn" class="btn">
+                        <i class="fas fa-magic"></i> Generate
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <!-- Fixed Preview Section -->
+                <div class="preview-section">
+                    <h2 class="panel-title"><i class="fas fa-eye"></i> Live Preview</h2>
+                    <div class="preview-form">
+                        <div class="form-row">
+                            <label for="preview-input">Username</label>
+                            <input type="text" id="preview-input" class="input-preview" placeholder="Enter your username">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Panels (now displayed side by side) -->
+                <div class="code-panels-container">
+                    <!-- HTML Code Panel -->
+                    <div class="code-panel-wrapper">
+                        <h2 class="panel-title"><i class="fab fa-html5"></i> HTML Code</h2>
+                        <div class="code-panel">
+                            <div class="code-header">
+                                <span>HTML</span>
+                                <button class="copy-btn" data-target="html-code">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre id="html-code"><code>&lt;div class="form-group"&gt;
+                &lt;label for="username"&gt;Username&lt;/label&gt;
+                &lt;input type="text" id="username" class="custom-input" placeholder="Enter your username" required&gt;
+            &lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- CSS Code Panel -->
+                    <div class="code-panel-wrapper">
+                        <h2 class="panel-title"><i class="fab fa-css3-alt"></i> CSS Code</h2>
+                        <div class="code-panel">
+                            <div class="code-header">
+                                <span>CSS</span>
+                                <button class="copy-btn" data-target="css-code">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre id="css-code"><code>.custom-input {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                font-size: 1rem;
+                color: #1a1a2e;
+                background-color: #ffffff;
+                transition: all 0.3s ease;
+            }
+
+            .custom-input:focus {
+                outline: none;
+                border-color: #4361ee;
+                box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+            }</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Code copied to clipboard!</div>
+    <a href="../index.html">Back to Main</a>
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Effects Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Text Effects Generator</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-switch">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+
+        <main>
+            <div class="preview-section">
+                <div class="preview-container">
+                    <div id="text-preview" contenteditable="true">Edit Me!</div>
+                </div>
+                <div class="export-options">
+                    <button id="copy-css" class="btn"><i class="fas fa-code"></i> Copy CSS</button>
+                    <button id="download-img" class="btn"><i class="fas fa-download"></i> Download Image</button>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="input-group">
+                    <label for="text-input">Your Text:</label>
+                    <input type="text" id="text-input" value="Edit Me!">
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="basic">Basic</button>
+                    <button class="tab-btn" data-tab="shadow">Shadow</button>
+                    <button class="tab-btn" data-tab="gradient">Gradient</button>
+                    <button class="tab-btn" data-tab="outline">Outline</button>
+                    <button class="tab-btn" data-tab="animation">Animation</button>
+                    <button class="tab-btn" data-tab="presets">Presets</button>
+                </div>
+
+                <div class="tab-content active" id="basic-tab">
+                    <div class="input-group">
+                        <label for="font-family">Font Family:</label>
+                        <select id="font-family">
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="'Poppins', sans-serif" selected>Poppins</option>
+                            <option value="'Times New Roman', serif">Times New Roman</option>
+                            <option value="'Courier New', monospace">Courier New</option>
+                            <option value="'Georgia', serif">Georgia</option>
+                            <option value="'Verdana', sans-serif">Verdana</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="font-size">Font Size:</label>
+                        <input type="range" id="font-size" min="10" max="120" value="48">
+                        <span id="font-size-value">48px</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="text-color">Text Color:</label>
+                        <input type="color" id="text-color" value="#4a6bff">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bg-color">Background Color:</label>
+                        <input type="color" id="bg-color" value="#f8f9fa">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="shadow-tab">
+                    <div class="input-group">
+                        <label for="shadow-color">Shadow Color:</label>
+                        <input type="color" id="shadow-color" value="#000000">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shadow-h-offset">Horizontal Offset:</label>
+                        <input type="range" id="shadow-h-offset" min="-50" max="50" value="5">
+                        <span id="shadow-h-offset-value">5px</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shadow-v-offset">Vertical Offset:</label>
+                        <input type="range" id="shadow-v-offset" min="-50" max="50" value="5">
+                        <span id="shadow-v-offset-value">5px</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shadow-blur">Blur Radius:</label>
+                        <input type="range" id="shadow-blur" min="0" max="50" value="10">
+                        <span id="shadow-blur-value">10px</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shadow-opacity">Opacity:</label>
+                        <input type="range" id="shadow-opacity" min="0" max="100" value="75">
+                        <span id="shadow-opacity-value">75%</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shadow-multiple">Multiple Shadows:</label>
+                        <input type="checkbox" id="shadow-multiple">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="gradient-tab">
+                    <div class="input-group">
+                        <label for="gradient-type">Gradient Type:</label>
+                        <select id="gradient-type">
+                            <option value="linear">Linear</option>
+                            <option value="radial">Radial</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="gradient-angle">Angle/Direction:</label>
+                        <input type="range" id="gradient-angle" min="0" max="360" value="90">
+                        <span id="gradient-angle-value">90deg</span>
+                    </div>
+
+                    <div class="gradient-colors">
+                        <div class="gradient-color">
+                            <input type="color" id="gradient-color-1" value="#ff0000">
+                            <input type="range" class="gradient-stop" min="0" max="100" value="0">
+                            <span>0%</span>
+                        </div>
+                        <div class="gradient-color">
+                            <input type="color" id="gradient-color-2" value="#ffff00">
+                            <input type="range" class="gradient-stop" min="0" max="100" value="50">
+                            <span>50%</span>
+                        </div>
+                        <div class="gradient-color">
+                            <input type="color" id="gradient-color-3" value="#00ff00">
+                            <input type="range" class="gradient-stop" min="0" max="100" value="100">
+                            <span>100%</span>
+                        </div>
+                    </div>
+
+                    <button id="add-gradient-color" class="btn"><i class="fas fa-plus"></i> Add Color</button>
+                    <button id="remove-gradient-color" class="btn"><i class="fas fa-minus"></i> Remove Color</button>
+                </div>
+
+                <div class="tab-content" id="outline-tab">
+                    <div class="input-group">
+                        <label for="outline-color">Outline Color:</label>
+                        <input type="color" id="outline-color" value="#000000">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="outline-width">Outline Width:</label>
+                        <input type="range" id="outline-width" min="1" max="20" value="2">
+                        <span id="outline-width-value">2px</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="outline-style">Outline Style:</label>
+                        <select id="outline-style">
+                            <option value="solid">Solid</option>
+                            <option value="dotted">Dotted</option>
+                            <option value="dashed">Dashed</option>
+                            <option value="double">Double</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="animation-tab">
+                    <div class="input-group">
+                        <label for="animation-type">Animation Type:</label>
+                        <select id="animation-type">
+                            <option value="none">None</option>
+                            <option value="pulse">Pulse</option>
+                            <option value="glow">Glow</option>
+                            <option value="shake">Shake</option>
+                            <option value="float">Float</option>
+                            <option value="color-change">Color Change</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="animation-duration">Duration:</label>
+                        <input type="range" id="animation-duration" min="0.5" max="10" step="0.5" value="2">
+                        <span id="animation-duration-value">2s</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="animation-iteration">Iteration:</label>
+                        <select id="animation-iteration">
+                            <option value="infinite">Infinite</option>
+                            <option value="1">Once</option>
+                            <option value="2">Twice</option>
+                            <option value="3">Three times</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group animation-color-group">
+                        <label for="animation-color">Animation Color:</label>
+                        <input type="color" id="animation-color" value="#ff0000">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="presets-tab">
+                    <div class="presets-grid">
+                        <div class="preset" data-preset="neon">
+                            <div class="preset-preview" style="color: #0ff; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;">Neon</div>
+                            <span>Neon</span>
+                        </div>
+                        <div class="preset" data-preset="vintage">
+                            <div class="preset-preview" style="color: #8B4513; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Vintage</div>
+                            <span>Vintage</span>
+                        </div>
+                        <div class="preset" data-preset="3d">
+                            <div class="preset-preview" style="color: #fff; text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #999;">3D</div>
+                            <span>3D</span>
+                        </div>
+                        <div class="preset" data-preset="gradient">
+                            <div class="preset-preview" style="background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00); -webkit-background-clip: text; color: transparent;">Gradient</div>
+                            <span>Gradient</span>
+                        </div>
+                        <div class="preset" data-preset="outline">
+                            <div class="preset-preview" style="color: #fff; -webkit-text-stroke: 2px #000;">Outline</div>
+                            <span>Outline</span>
+                        </div>
+                        <div class="preset" data-preset="fire">
+                            <div class="preset-preview" style="color: #ff4500; text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500;">Fire</div>
+                            <span>Fire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="css-output-container">
+            <h3>CSS Code:</h3>
+            <textarea id="css-output" readonly></textarea>
+            <div class="tooltip">Copied to clipboard!</div>
+        </div>
+    </div>
+
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <a href="../index.html">Back to Main</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
